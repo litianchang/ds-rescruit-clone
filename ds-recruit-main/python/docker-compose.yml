@@ -1,0 +1,18 @@
+# 需要显式指定版本，否则会使用默认的compose 1去执行
+version: '3'
+
+services:
+
+  recruit:
+    container_name: recruit_python
+    image: recruit/python
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/srv:cached
+    tty: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M
